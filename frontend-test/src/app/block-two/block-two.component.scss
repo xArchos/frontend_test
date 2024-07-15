@@ -60,11 +60,12 @@
     }
   }
 
-  @media (max-width: 450px) {
+  @media (max-width: 600px) {
     &__button {
-      width: 9rem; // 80% of original width (11.25rem)
-      height: 2.5rem; // 80% of original height (3.125rem)
-      font-size: 0.8rem; // 80% of original font-size (1rem)
+      width: calc(11.25rem * 0.7);
+      height: calc(3.125rem * 0.7);
+      font-size: calc(1rem * 0.7);
     }
   }
+
 }

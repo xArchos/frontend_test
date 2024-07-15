@@ -20,6 +20,10 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
+
+    .footer__box-content {
+      text-transform: uppercase; // Apply uppercase to "CSS IS AWESOME"
+    }
   }
 
   &__box {
@@ -151,6 +155,7 @@
         cursor: pointer;
         display: flex;
         align-items: center;
+        text-transform: uppercase; // Apply uppercase to dropdown items
 
         .arrow {
           margin-right: 0.5rem;

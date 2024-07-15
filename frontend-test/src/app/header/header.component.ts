@@ -21,7 +21,7 @@ export class HeaderComponent implements OnChanges {
     }
   }
 
-  updateDisplayName(): void {
+  private updateDisplayName(): void {
     this.displayName = `Zadanie rekrutacyjne${this.candidateName ? ` - ${this.candidateName}` : ''}`;
   }
 }

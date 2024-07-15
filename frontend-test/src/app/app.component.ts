@@ -7,9 +7,7 @@ import { MainContentComponent } from "./main-content/main-content.component";
   standalone: true,
   imports: [RouterOutlet, MainContentComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  title = 'frontend-test';
 }

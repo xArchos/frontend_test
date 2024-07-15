@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Option } from '../../../public/models';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class BlockCommunicationService {
   private blockOneSelectionSubject = new BehaviorSubject<Option>(Option.First);
   blockOneSelection$: Observable<Option> = this.blockOneSelectionSubject.asObservable();

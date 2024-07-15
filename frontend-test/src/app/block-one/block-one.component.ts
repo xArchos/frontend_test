@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { DataService } from "../services/data.service";
 import { FormBuilder, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { Data, Option } from "../../../public/models";
 import { BlockCommunicationService } from "../services/block-communication.service";
+import { Subject, takeUntil } from "rxjs";
 
 @Component({
   selector: 'app-block-one',
@@ -14,11 +15,13 @@ import { BlockCommunicationService } from "../services/block-communication.servi
   styleUrl: './block-one.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BlockOneComponent implements OnInit {
+export class BlockOneComponent implements OnInit, OnDestroy {
   readonly Option = Option;
   form: FormGroup;
   content: string = '';
   data!: Data;
+
+  private readonly onDestroy$: Subject<void> = new Subject();
 
   constructor(private dataService: DataService, private fb: FormBuilder, private blockCommunicationService: BlockCommunicationService) {
     this.form = this.fb.group({
@@ -29,9 +32,14 @@ export class BlockOneComponent implements OnInit {
   ngOnInit(): void {
     this.loadData();
 
-    this.form.get('option')?.valueChanges.subscribe(value => {
-      this.selectOption(value);
-    });
+    this.form.get('option')?.valueChanges
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe(value => this.selectOption(value));
+  }
+
+  ngOnDestroy(): void {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
   }
 
   selectOption(option: Option): void {

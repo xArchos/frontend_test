@@ -18,7 +18,6 @@ export class FooterComponent {
   constructor(private dataService: DataService) {
   }
 
-
   appendName(): void {
     this.dataService.getData().subscribe(data => {
       const fullName: string = `${data.candidate.name} ${data.candidate.surname}`;
