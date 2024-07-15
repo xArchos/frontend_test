@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { BlockThreeComponent } from "../block-three/block-three.component";
 import { BlockTwoComponent } from "../block-two/block-two.component";
 import { BlockOneComponent } from "../block-one/block-one.component";
@@ -25,7 +25,7 @@ import { FooterComponent } from "../footer/footer.component";
 export class MainContentComponent {
   candidateName: string = '';
 
-  // @ViewChild(BlockThreeComponent) blockThree!: BlockThreeComponent;
+  @ViewChild(BlockThreeComponent) blockThree!: BlockThreeComponent;
 
   onNameAppended(name: string): void {
     this.candidateName = name;
