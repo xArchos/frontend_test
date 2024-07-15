@@ -1,4 +1,4 @@
 [build]
 base = "frontend-test"
 command = "npm run build"
-publish = "dist/frontend-test"
+publish = "frontend-test/dist/frontend-test"
