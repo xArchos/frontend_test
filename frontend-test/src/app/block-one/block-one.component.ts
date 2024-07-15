@@ -34,6 +34,11 @@ export class BlockOneComponent implements OnInit {
     });
   }
 
+  selectOption(option: Option): void {
+    this.blockCommunicationService.updateBlockOneSelection(option);
+    this.updateContent();
+  }
+
   private loadData(): void {
     this.dataService.getData().subscribe({
       next: data => {
@@ -44,11 +49,6 @@ export class BlockOneComponent implements OnInit {
         console.error('Failed to load data', err);
       }
     });
-  }
-
-  selectOption(option: Option): void {
-    this.blockCommunicationService.updateBlockOneSelection(option);
-    this.updateContent();
   }
 
   private updateContent(): void {
@@ -69,7 +69,7 @@ export class BlockOneComponent implements OnInit {
       case Option.Second:
         return this.data.content[1].content;
       case Option.Random:
-        const randomIndex = Math.floor(Math.random() * this.data.content.length);
+        const randomIndex: number = Math.floor(Math.random() * this.data.content.length);
         return this.data.content[randomIndex].content;
       default:
         return '';

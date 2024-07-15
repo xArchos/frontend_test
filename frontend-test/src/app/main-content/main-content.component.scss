@@ -28,32 +28,32 @@ header {
 }
 
 .main-content {
-  padding-top: 160px; // Zmieniono padding-top, aby uzyskać 60px odstępu od headera
+  padding-top: 160px;
   padding-bottom: 70px;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
 
   h1.header-title {
-    display: inline-block; // Ensures the header width matches the text
+    display: inline-block;
     margin-bottom: 2rem;
     font-size: 2rem;
     font-weight: 400; // Not bold
-    font-family: 'Open Sans', sans-serif; // Ensure the correct font is used
-    margin-top: 0; // Reset the top margin
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 0;
   }
 
   .line-container {
     display: flex;
     justify-content: center;
-    width: 100%; // Ensure the line container takes the full width
+    width: 100%;
   }
 
   .line {
-    width: 50%; // Adjust this value to make the line slightly shorter than the text
-    max-width: 150px; // Ensure it is not too long
+    width: 50%;
+    max-width: 150px;
     height: 2px;
     background-color: white;
-    margin-top: -1rem; // Adjust to move the line closer or further from the header
+    margin-top: -1rem;
   }
 
   .blocks {
@@ -61,7 +61,7 @@ header {
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: nowrap;
-    margin-top: 60px; // Dodano odstęp 60px od nagłówka do bloków
+    margin-top: 60px;
 
     @media (max-width: 960px) {
       flex-wrap: wrap;

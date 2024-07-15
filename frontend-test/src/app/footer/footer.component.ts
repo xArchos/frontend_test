@@ -21,7 +21,7 @@ export class FooterComponent {
 
   appendName(): void {
     this.dataService.getData().subscribe(data => {
-      const fullName = `${data.candidate.name} ${data.candidate.surname}`;
+      const fullName: string = `${data.candidate.name} ${data.candidate.surname}`;
       this.nameAppended.emit(fullName);
       this.isNameDisplayed = true;
     });
