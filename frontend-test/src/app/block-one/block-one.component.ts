@@ -1,12 +1,78 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { DataService } from "../services/data.service";
+import { FormBuilder, FormGroup, ReactiveFormsModule } from "@angular/forms";
+import { Data, Option } from "../../../public/models";
+import { BlockCommunicationService } from "../services/block-communication.service";
 
 @Component({
   selector: 'app-block-one',
   standalone: true,
-  imports: [],
+  imports: [
+    ReactiveFormsModule
+  ],
   templateUrl: './block-one.component.html',
-  styleUrl: './block-one.component.scss'
+  styleUrl: './block-one.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BlockOneComponent {
+export class BlockOneComponent implements OnInit {
+  readonly Option = Option;
+  form: FormGroup;
+  content: string = '';
+  data!: Data;
 
+  constructor(private dataService: DataService, private fb: FormBuilder, private blockCommunicationService: BlockCommunicationService) {
+    this.form = this.fb.group({
+      option: ['']
+    });
+  }
+
+  ngOnInit(): void {
+    this.loadData();
+
+    this.form.get('option')?.valueChanges.subscribe(value => {
+      this.selectOption(value);
+    });
+  }
+
+  private loadData(): void {
+    this.dataService.getData().subscribe({
+      next: data => {
+        this.data = data;
+        this.updateContent();
+      },
+      error: err => {
+        console.error('Failed to load data', err);
+      }
+    });
+  }
+
+  selectOption(option: Option): void {
+    this.blockCommunicationService.updateBlockOneSelection(option);
+    this.updateContent();
+  }
+
+  private updateContent(): void {
+    if (!this.data) return;
+
+    const selectedOption = this.form.get('option')?.value;
+    if (selectedOption) {
+      this.content = this.calculateContent(selectedOption);
+    } else {
+      this.content = '';
+    }
+  }
+
+  private calculateContent(selectedOption: Option): string {
+    switch (selectedOption) {
+      case Option.First:
+        return this.data.content[0].content;
+      case Option.Second:
+        return this.data.content[1].content;
+      case Option.Random:
+        const randomIndex = Math.floor(Math.random() * this.data.content.length);
+        return this.data.content[randomIndex].content;
+      default:
+        return '';
+    }
+  }
 }

@@ -1,1 +1,17 @@
-<p>block-one works!</p>
+<div class="block-one">
+  <h2 class="block-one__title">Blok Pierwszy</h2>
+  <form [formGroup]="form" class="block-one__form">
+    <label class="block-one__option">
+      <input type="radio" formControlName="option" [value]="Option.First" class="block-one__radio">
+      <span class="block-one__label">Opcja pierwsza</span>
+    </label>
+    <label class="block-one__option">
+      <input type="radio" formControlName="option" [value]="Option.Second" class="block-one__radio">
+      <span class="block-one__label">Opcja druga</span>
+    </label>
+    <label class="block-one__option">
+      <input type="radio" formControlName="option" [value]="Option.Random" class="block-one__radio">
+      <span class="block-one__label">Opcja losowa</span>
+    </label>
+  </form>
+</div>
