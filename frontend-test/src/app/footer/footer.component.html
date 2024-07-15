@@ -1,1 +1,39 @@
-<p>footer works!</p>
+<div class="page-container">
+  <div class="content-wrap">
+    <!-- Twoje treści strony tutaj -->
+  </div>
+  <footer class="footer">
+    <div class="footer__content">
+      <div class="footer__css-is-awesome">
+        <div class="footer__box">
+          <div class="footer__box-border"></div>
+          <div class="footer__box-content">
+            <div>CSS</div>
+            <div>IS</div>
+            <div>AWESOME</div>
+          </div>
+        </div>
+        <div class="footer__title">
+          <span class="footer__line"></span>
+          <span class="footer__text">nabthat</span>
+          <span class="footer__line"></span>
+        </div>
+      </div>
+      <div class="dropdown">
+        <input type="checkbox" id="toggle-dropdown" class="dropdown-checkbox" />
+        <label for="toggle-dropdown" class="dropdown-toggle">
+          Pokaż
+          <span class="arrow">›</span>
+        </label>
+        <div class="dropdown-menu">
+          <div class="dropdown-item" (click)="requestReset()">
+            <span class="arrow">›</span> ZRESETUJ USTAWIENIA
+          </div>
+          <div class="dropdown-item" (click)="appendName()" [class.disabled]="isNameDisplayed">
+            <span class="arrow">›</span> POKAŻ DANE OSOBOWE
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

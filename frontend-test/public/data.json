@@ -1,0 +1,14 @@
+﻿{
+  "content": [
+    { "content": "Content 1" },
+    { "content": "Content 2" },
+    { "content": "Content 3" },
+    { "content": "Content 4" },
+    { "content": "Content 5" },
+    { "content": "Content 6" }
+  ],
+  "candidate": {
+    "name": "Mateusz",
+    "surname": "Putek"
+  }
+}

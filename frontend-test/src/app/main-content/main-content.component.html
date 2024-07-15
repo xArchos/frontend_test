@@ -1,1 +1,19 @@
-<p>main-content works!</p>
+<app-header [candidateName]="candidateName"></app-header>
+<main class="main-content">
+  <h1 class="header-title">Nagłówek H1</h1>
+  <div class="line-container">
+    <div class="line"></div>
+  </div>
+  <div class="blocks">
+    <div class="column block-one">
+      <app-block-one></app-block-one>
+    </div>
+    <div class="column block-two">
+      <app-block-two></app-block-two>
+    </div>
+    <div class="column block-three">
+      <app-block-three></app-block-three>
+    </div>
+  </div>
+</main>
+<app-footer (nameAppended)="onNameAppended($event)" (resetRequested)="onResetRequested()"></app-footer>
