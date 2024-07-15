@@ -1,10 +1,12 @@
+@import '../../_variables';
+
 .block-one {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 16px;
   background-color: transparent;
-  color: white;
+  color: $text-color;
   border: none;
   font-family: 'Open Sans', sans-serif;
 
@@ -32,7 +34,7 @@
 
     &.selected {
       font-weight: bold;
-      color: white;
+      color: $text-color;
     }
 
     &::after {
@@ -46,14 +48,14 @@
     }
 
     &:hover {
-      color: #ffaa00;
+      color: $highlight-color;
     }
 
     input[type="radio"] {
       -webkit-appearance: none;
       appearance: none;
       background-color: transparent;
-      border: 2px solid white;
+      border: 2px solid $text-color;
       border-radius: 50%;
       width: 1.5rem;
       height: 1.5rem;
@@ -66,7 +68,7 @@
         display: block;
         width: 0.8rem;
         height: 0.8rem;
-        background-color: white;
+        background-color: $text-color;
         border-radius: 50%;
         position: absolute;
         top: 50%;
@@ -90,6 +92,6 @@
 
   &__radio:checked + .block-one__label {
     font-weight: bold;
-    color: white;
+    color: $text-color;
   }
 }
