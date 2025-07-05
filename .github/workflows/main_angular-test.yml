@@ -70,4 +70,4 @@ jobs:
           app-name: 'angular-test'
           slot-name: 'Production'
           package: .
-          
+          remove-additional-files: true
