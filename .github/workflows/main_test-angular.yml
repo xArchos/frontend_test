@@ -1,7 +1,4 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Build and deploy ASP.Net Core app to Azure Web App - test-angular
+name: Build and deploy Angular app to Azure Web App - test-angular
 
 on:
   push:
@@ -11,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest 
     permissions:
       contents: read
 
@@ -32,11 +29,11 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: node-app
+          name: angular-app
           path: ./frontend-test/dist/frontend-test/browser/
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: build
     permissions:
       id-token: write
@@ -46,8 +43,8 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: node-app
-
+          name: angular-app
+      
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -55,11 +52,11 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_169E9184CAB4451C9B5E35A6A259D856 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_98A434E0DAD24CF0BB4B9A58D2EB7572 }}
 
-      - name: 'Deploy to Azure Web App'
+      - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'angular-test'
+          app-name: 'test-angular'
           slot-name: 'Production'
           package: .
-          clean: true
+          remove-additional-files: true
