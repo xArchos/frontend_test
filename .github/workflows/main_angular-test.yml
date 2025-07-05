@@ -29,6 +29,9 @@ jobs:
           npm install
           npm run build --if-present
 
+      - name: Check build output for debugging
+        run: ls -R ./frontend-test/dist
+
       - name: Zip artifact for deployment
         run: |
           cd ./frontend-test/dist/frontend-test/browser
